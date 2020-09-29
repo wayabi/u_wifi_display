@@ -150,6 +150,11 @@ class MultiSocketTcpServer
 
     private string GetIPAddress(string hostname)
     {
+		IPAddress o_ip_address;
+		if (IPAddress.TryParse(hostname, out o_ip_address))
+		{
+			return hostname;
+		}
         IPHostEntry host;
         host = Dns.GetHostEntry(hostname);
 
